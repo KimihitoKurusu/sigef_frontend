@@ -2,18 +2,21 @@
 import React from 'react';
 import {Layout} from 'antd';
 import {Inter} from "next/font/google";
-
+import MyHeader from "@/components/base/Header/Header";
+import "../globals.css";
 const {Header, Footer, Sider, Content} = Layout;
 const inter = Inter({subsets: ["latin"]});
-
+import styles from './Layout.module.scss'
 
 const headerStyle: React.CSSProperties = {
+    position: 'sticky',
     textAlign: 'center',
     color: '#fff',
     height: 64,
     paddingInline: 48,
     lineHeight: '64px',
     backgroundColor: '#4096ff',
+    top: '0.75rem'
 };
 
 const contentStyle: React.CSSProperties = {
@@ -54,7 +57,7 @@ export default function RootLayout({
                         Sider
                     </Sider>
                     <Layout>
-                        <Header style={headerStyle}>Header</Header>
+                       <Header className={`${styles['header']}`}><MyHeader/></Header>
                         <Content style={contentStyle}>
                             {children}
                         </Content>

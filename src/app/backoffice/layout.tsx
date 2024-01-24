@@ -4,20 +4,11 @@ import {Layout} from 'antd';
 import {Inter} from "next/font/google";
 import MyHeader from "@/components/base/Header/Header";
 import "../globals.css";
+import styles from './Layout.module.scss'
+import {MySider} from "@/components";
+
 const {Header, Footer, Sider, Content} = Layout;
 const inter = Inter({subsets: ["latin"]});
-import styles from './Layout.module.scss'
-
-const headerStyle: React.CSSProperties = {
-    position: 'sticky',
-    textAlign: 'center',
-    color: '#fff',
-    height: 64,
-    paddingInline: 48,
-    lineHeight: '64px',
-    backgroundColor: '#4096ff',
-    top: '0.75rem'
-};
 
 const contentStyle: React.CSSProperties = {
     textAlign: 'center',
@@ -27,21 +18,21 @@ const contentStyle: React.CSSProperties = {
 };
 
 const siderStyle: React.CSSProperties = {
-    textAlign: 'center',
-    lineHeight: '120px',
-    color: '#fff',
-    backgroundColor: '#1677ff',
+    height: '100%',
+    top: '.40rem',
+    backgroundColor: '#ffff'
+
 };
 
 const footerStyle: React.CSSProperties = {
     textAlign: 'center',
-    color: '#fff',
-    backgroundColor: '#4096ff',
 };
 
 const layoutStyle = {
     borderRadius: 8,
     overflow: 'hidden',
+    backgroundColor: '#ffffff',
+    boxShadow: '10px 4px 40px -7px rgba(0,0,0,0.72)',
 };
 
 export default function RootLayout({
@@ -51,20 +42,24 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={inter.className}>
-                <Layout style={layoutStyle}>
-                    <Sider width="25%" style={siderStyle}>
-                        Sider
-                    </Sider>
-                    <Layout>
-                       <Header className={`${styles['header']}`}><MyHeader/></Header>
-                        <Content style={contentStyle}>
-                            {children}
-                        </Content>
-                        <Footer style={footerStyle}>Footer</Footer>
-                    </Layout>
-                </Layout>
-            </body>
+        <body className={inter.className}>
+        <Layout siderBg={'#ffffff'} style={layoutStyle}>
+            <Sider
+                collapsible
+                width="20%"
+                style={siderStyle}
+            >
+                <MySider/>
+            </Sider>
+            <Layout>
+                <Header className={`${styles['header']}`}><MyHeader/></Header>
+                <Content style={contentStyle}>
+                    {children}
+                </Content>
+                <Footer style={footerStyle}>Footer</Footer>
+            </Layout>
+        </Layout>
+        </body>
         </html>
     );
 }

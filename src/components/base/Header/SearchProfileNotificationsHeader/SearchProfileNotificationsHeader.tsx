@@ -1,7 +1,7 @@
 import React from "react"
 import {CustomAutoCompleteInput} from "@/components";
 import { HiUserCircle } from "react-icons/hi2";
-import CustomNotificationBadge from "../../CustomNotificationBadge/CustomNotificationBadge";
+import CustomNotificationBadge from "../CustomNotificationBadge/CustomNotificationBadge";
 
 const SearchProfileNotificationsHeader = () =>{
     return (

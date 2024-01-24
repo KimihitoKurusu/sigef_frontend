@@ -9,10 +9,10 @@ const CustomBreadcrumb: React.FC = () => (
                 title: 'Home',
             },
             {
-                title: <a href="">Application Center</a>,
+                title: <a href="@/components/base/Header/CustomBreadcrumb/CustomBreadcrumb">Application Center</a>,
             },
             {
-                title: <a href="">Application List</a>,
+                title: <a href="@/components/base/Header/CustomBreadcrumb/CustomBreadcrumb">Application List</a>,
             },
             {
                 title: 'An Application',

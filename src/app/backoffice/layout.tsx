@@ -22,7 +22,7 @@ const contentStyle: React.CSSProperties = {
 const siderStyle: React.CSSProperties = {
     height: '100%',
     top: '.40rem',
-    backgroundColor: '#ffff',
+    backgroundColor: '#096dd9',
 };
 
 const footerStyle: React.CSSProperties = {
@@ -30,10 +30,11 @@ const footerStyle: React.CSSProperties = {
 };
 
 const layoutStyle = {
-    borderRadius: 8,
+    borderRadius: '8px 0 0 0',
     overflow: 'hidden',
-    backgroundColor: '#ffffff',
+    backgroundColor: '#096dd9',
     boxShadow: '10px 4px 40px -7px rgba(0,0,0,0.72)',
+
 };
 
 export default function RootLayout({
@@ -52,7 +53,7 @@ export default function RootLayout({
             >
                 <MySider/>
             </Sider>
-            <Layout>
+            <Layout style={{position:'relative' ,top: '0.3rem' ,borderRadius: '2rem 0 0 0'}}>
                 <Header
                     className={styles['header']}
                     style={{

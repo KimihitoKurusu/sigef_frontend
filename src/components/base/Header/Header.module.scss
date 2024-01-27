@@ -5,3 +5,18 @@
   -webkit-box-align: center;
   align-items: center;
 }
+@media (max-width: 576px) {
+  .navbar {
+    flex-wrap: wrap;
+  }
+}
+.responsive-content {
+  flex-wrap: nowrap;
+}
+@media (max-width: 577px) {
+  .responsive-content  {
+    //display: contents!important;
+
+  }
+
+}

@@ -14,7 +14,7 @@ const CustomAutoCompleteInput: React.FC = () => {
     return (
         <Input
             className='mx-1'
-            size='small'
+            size='default'
             placeholder="Search..."
             prefix={<SearchOutlined/>}
             style={inputStyle}

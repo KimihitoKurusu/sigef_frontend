@@ -6,9 +6,9 @@ import CustomNotificationBadge from "../CustomNotificationBadge/CustomNotificati
 const SearchProfileNotificationsHeader = () =>{
     return (
         <>
-           <CustomAutoCompleteInput/>
-            <HiUserCircle  className='mx-1'/>
-            <CustomNotificationBadge className='mx-1'/>
+            <CustomAutoCompleteInput/>
+            <HiUserCircle  className='mx-3'/>
+            <CustomNotificationBadge className='mx-2'/>
         </>
     )
 }

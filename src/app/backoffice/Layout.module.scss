@@ -1,7 +1,6 @@
 .header {
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   flex-direction: column;
-  box-sizing: border-box;
   position: sticky !important;
   z-index: 999;
   top: 0.40rem;
@@ -18,7 +17,7 @@
   background-color: rgba(245, 245, 245, 0.71);
   text-align: center;
   color: #373535;
-  height: 40px;
+  height: 4rem;
   padding-inline: 20px;
   line-height: 64px;
   margin: .2rem .2rem .2rem .5rem;

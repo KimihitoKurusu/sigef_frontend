@@ -1,14 +1,16 @@
 "use client"
-import React from 'react';
-import {Layout} from 'antd';
+import React, {useEffect, useState} from 'react';
+import {Layout, Menu} from 'antd';
 import {Inter} from "next/font/google";
 import MyHeader from "@/components/base/Header/Header";
 import "../globals.css";
 import styles from './Layout.module.scss'
 import {MySider} from "@/components";
+import useWindowSize from "@/Hooks/useWindowSize";
 
 const {Header, Footer, Sider, Content} = Layout;
 const inter = Inter({subsets: ["latin"]});
+
 
 const contentStyle: React.CSSProperties = {
     textAlign: 'center',
@@ -20,8 +22,7 @@ const contentStyle: React.CSSProperties = {
 const siderStyle: React.CSSProperties = {
     height: '100%',
     top: '.40rem',
-    backgroundColor: '#ffff'
-
+    backgroundColor: '#ffff',
 };
 
 const footerStyle: React.CSSProperties = {
@@ -46,13 +47,21 @@ export default function RootLayout({
         <Layout siderBg={'#ffffff'} style={layoutStyle}>
             <Sider
                 collapsible
-                width="20%"
+                breakpoint={'sm'}
                 style={siderStyle}
             >
                 <MySider/>
             </Sider>
             <Layout>
-                <Header className={`${styles['header']}`}><MyHeader/></Header>
+                <Header
+                    className={styles['header']}
+                    style={{
+                        position: 'sticky',
+                    }}
+                >
+                    <div className="demo-logo" />
+                    <MyHeader/>
+                </Header>
                 <Content style={contentStyle}>
                     {children}
                 </Content>

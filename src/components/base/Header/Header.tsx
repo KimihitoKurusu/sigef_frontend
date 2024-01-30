@@ -51,7 +51,7 @@ export default function MyHeader() {
                             flex: 1,
                             minWidth: 0,
                             backgroundColor: '#F5F5F5B5',
-                            flexDirection: 'row-reverse'
+                            flexDirection: 'row-reverse',
                         }
                     }
                 />

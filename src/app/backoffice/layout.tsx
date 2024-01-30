@@ -7,6 +7,7 @@ import '../globals.css'
 import styles from './Layout.module.scss'
 import { MySider } from '@/components'
 import useWindowSize from '@/Hooks/useWindowSize'
+import localFont from 'next/font/local'
 
 const { Header, Footer, Sider, Content } = Layout
 const inter = Inter({ subsets: ['latin'] })
@@ -63,7 +64,6 @@ export default function RootLayout({
 							position: 'relative',
 							top: '0.3rem',
 							borderRadius: '2rem 0 0 0',
-                            backgroundColor: 'rgba(255,255,255,0.5)',
 						}}
 					>
 						<Header

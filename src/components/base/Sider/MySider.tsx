@@ -62,7 +62,7 @@ const MySider: React.FC = () => {
 
     return (
         <Menu
-            style={{backgroundColor: '#096dd9', color: '#ffffff'}}
+            style={{backgroundColor: 'transparent', color: '#ffffff'}}
             onClick={onClick}
             mode="inline"
             items={items}

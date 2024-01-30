@@ -1,7 +1,7 @@
 .header {
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   flex-direction: column;
-  position: sticky !important;
+  position: top;
   z-index: 999;
   top: 0.40rem;
   left: auto;
@@ -14,11 +14,16 @@
   -webkit-box-align: center;
   align-items: center;
   border-radius: 0.75rem;
-  background-color: rgba(245, 245, 245, 0.71);
+  background: transparent;
   text-align: center;
   color: #373535;
   height: 4rem;
   padding-inline: 20px;
   line-height: 64px;
   margin: .2rem .2rem .2rem .5rem;
+}
+
+.layout-background {
+  background: rgb(17,19,113);
+  background: linear-gradient(90deg, rgba(17,19,113,1) 11%, rgba(63,47,205,1) 46%, rgba(152,155,196,1) 81%);
 }

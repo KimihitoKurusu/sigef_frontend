@@ -7,7 +7,7 @@ interface SidebarSection {
     icon?: React.ReactNode,
     children?: React.ReactNode,
     subItems?: SidebarSection[]
-    isVisible: boolean,
+    isVisible?: boolean,
     isSubMenu?: boolean,
     title?: React.ReactNode,
     className?: string

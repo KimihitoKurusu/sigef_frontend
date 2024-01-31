@@ -4,7 +4,7 @@ import {SearchOutlined} from "@ant-design/icons";
 
 const inputStyle: React.CSSProperties = {
     borderRadius: '0.4rem',
-    width: '10rem'
+    width: '11rem'
 };
 
 

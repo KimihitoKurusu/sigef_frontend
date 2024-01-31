@@ -27,8 +27,6 @@ function getItem(
 const items: MenuItem[] = [
     getItem('', '3', <HiUserCircle style={{fontSize: '25px'}}/>),
     getItem('', '4', <CustomNotificationBadge/>),
-    getItem('', '1', <CustomAutoCompleteInput/>),
-
 ];
 export default function MyHeader() {
     const size = useWindowSize();

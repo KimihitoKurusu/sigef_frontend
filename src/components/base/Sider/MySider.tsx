@@ -1,17 +1,24 @@
 import React, {useEffect, useState} from 'react';
 import type {MenuProps} from 'antd';
-import {Menu} from 'antd';
+import {Divider, Menu} from 'antd';
 import {helpers} from "./sider.helpers";
-import { useRouter } from 'next/navigation';
+import {useRouter} from 'next/navigation';
+import Title from "antd/lib/typography/Title";
+import useSidebarCollapsed from "@/Hooks/useSidebarCollapsed";
+import {CustomAutoCompleteInput} from "@/components";
 
 const MySider: React.FC = () => {
     const [openKeys, setOpenKeys] = useState([])
     const route = useRouter().route
     const [currentActiveKey, setCurrentActiveKey] = useState<string>(null)
+    const isSiderCollapsed = useSidebarCollapsed()
     const sections = helpers.menuSections()
+
+
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
     };
+    console.log('isSiderCollapsed', isSiderCollapsed)
 
     const onOpenChange: MenuProps['onOpenChange'] = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1)
@@ -34,14 +41,21 @@ const MySider: React.FC = () => {
        <>
            <div className={`columns`}>
                <div className={'column is-3 is-full-width-mobile'}>
-                   <div className={`is-size-5`}>
-                       <h1>SIGEF</h1>
+                   <div className='flex flex-col items-center'>
+                       <div className='mb-4 w-max transition-transform'>
+                           <Title
+                               style={{color: 'white', fontFamily: 'Permanent Marker'}}
+                               level={!isSiderCollapsed ? 2 : 5}
+                           >
+                               SIGEF
+                           </Title>
+                       </div>
                    </div>
-
+                   <Divider orientation="right" orientationMargin={50}/>
                    <React.StrictMode>
                        {<Menu
                            mode='inline'
-                           style={{ backgroundColor: 'transparent', color: '#FFFFFF' }}
+                           style={{backgroundColor: 'transparent', color: '#FFFFFF'}}
                            openKeys={openKeys}
                            onOpenChange={onOpenChange}
                            activeKey={currentActiveKey}

@@ -1,14 +1,12 @@
 'use client'
-import React, { useEffect, useState } from 'react'
-import { Layout, Menu } from 'antd'
+import React from 'react'
+import { Layout } from 'antd'
 import { Inter } from 'next/font/google'
 import MyHeader from '@/components/base/Header/Header'
 import '../globals.css'
 import styles from './Layout.module.scss'
 import { MySider } from '@/components'
-import useWindowSize from '@/Hooks/useWindowSize'
-import localFont from 'next/font/local'
-
+import useSidebarCollapsed from '@/Hooks/useSidebarCollapsed'
 const { Header, Footer, Sider, Content } = Layout
 const inter = Inter({ subsets: ['latin'] })
 
@@ -40,6 +38,8 @@ export default function RootLayout({
 }: Readonly<{
 	children: React.ReactNode
 }>) {
+	const isSidebarCollapsed = useSidebarCollapsed()
+
 	return (
 		<html lang='en'>
 			<head>

@@ -1,72 +1,88 @@
-import React from 'react';
-import {AppstoreOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
+import React, {useEffect, useState} from 'react';
 import type {MenuProps} from 'antd';
 import {Menu} from 'antd';
-
-type MenuItem = Required<MenuProps>['items'][number];
-
-function getItem(
-    label: React.ReactNode,
-    key: React.Key,
-    icon?: React.ReactNode,
-    children?: MenuItem[],
-    type?: 'group',
-): MenuItem {
-    return {
-        key,
-        icon,
-        children,
-        label,
-        type,
-    } as MenuItem;
-}
-
-const items: MenuProps['items'] = [
-    getItem('Navigation One', 'sub1', <MailOutlined/>, [
-        getItem('Item 1', 'g1', null, [getItem('Option 1', '1'), getItem('Option 2', '2')], 'group'),
-        getItem('Item 2', 'g2', null, [getItem('Option 3', '3'), getItem('Option 4', '4')], 'group'),
-    ]),
-
-    getItem('Navigation Two', 'sub2', <AppstoreOutlined/>, [
-        getItem('Option 5', '5'),
-        getItem('Option 6', '6'),
-        getItem('Submenu', 'sub3', null, [getItem('Option 7', '7'), getItem('Option 8', '8')]),
-    ]),
-
-    {type: 'divider'},
-
-    getItem('Navigation Three', 'sub4', <SettingOutlined/>, [
-        getItem('Option 9', '9'),
-        getItem('Option 10', '10'),
-        getItem('Option 11', '11'),
-        getItem('Option 12', '12'),
-    ]),
-    getItem('Navigation 4', 'sub4', <SettingOutlined/>, [
-        getItem('Option 9', '9'),
-        getItem('Option 10', '10'),
-        getItem('Option 11', '11'),
-        getItem('Option 12', '12'),
-    ]),
-    getItem('Navigation 5', 'sub4', <SettingOutlined/>, [
-        getItem('Option 9', '9'),
-        getItem('Option 10', '10'),
-        getItem('Option 11', '11'),
-        getItem('Option 12', '12'),
-    ]),
-];
+import {helpers} from "./sider.helpers";
+import { useRouter } from 'next/navigation';
 
 const MySider: React.FC = () => {
+    const [openKeys, setOpenKeys] = useState([])
+    const route = useRouter().route
+    const [currentActiveKey, setCurrentActiveKey] = useState<string>(null)
+    const sections = helpers.menuSections()
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
     };
 
+    const onOpenChange: MenuProps['onOpenChange'] = keys => {
+        const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1)
+        if (['Election'].indexOf(latestOpenKey!) === -1) {
+            setOpenKeys(keys)
+        } else { setOpenKeys(latestOpenKey ? [latestOpenKey] : []) }
+    }
+
+    useEffect(() => {
+        if (route !== currentActiveKey) {
+            let newKey: string|null = null
+            if (route === '/') { newKey = '/' }
+            else { newKey = route?.split('/')[1] }
+            setCurrentActiveKey(newKey)
+            setOpenKeys(helpers.getDefaultOpenKeys(newKey))
+        }
+    }, [route])
+
     return (
-        <Menu
-            style={{backgroundColor: 'transparent', color: '#ffffff'}}
-            onClick={onClick}
-            mode="inline"
-            items={items}
-        />
+       <>
+           <div className={`columns`}>
+               <div className={'column is-3 is-full-width-mobile'}>
+                   <div className={`is-size-5`}>
+                       <h1>SIGEF</h1>
+                   </div>
+
+                   <React.StrictMode>
+                       {<Menu
+                           mode='inline'
+                           style={{ backgroundColor: 'transparent', color: '#FFFFFF' }}
+                           openKeys={openKeys}
+                           onOpenChange={onOpenChange}
+                           activeKey={currentActiveKey}
+                           defaultSelectedKeys={[currentActiveKey]}
+                           defaultOpenKeys={helpers.getDefaultOpenKeys(currentActiveKey)}
+                       >
+                           {sections.map((section, idx) => (
+                               <React.Fragment key={idx}>
+                                   {(section.isSubMenu && section.isVisible ? (
+                                       <Menu.SubMenu {...section}>
+                                           {section.subItems?.map((subItem) => {
+                                               if (!subItem.isVisible) return
+                                               return (
+                                                   <Menu.Item
+                                                       key={subItem.key}
+                                                       className={(section.hasPermision /**&& !user?.id*/) && 'fade-animation'}
+                                                   >
+                                                       {subItem.children}
+                                                   </Menu.Item>
+                                               )
+                                           })}
+                                       </Menu.SubMenu>
+                                   ) : (section.isVisible && !section.isSubMenu) && <>
+                                       <Menu.Item
+                                           className={(section.hasPermision /**&& !user?.id*/) && 'fade-animation'}
+                                           {...section}
+                                       >
+                                           {section.children}
+                                       </Menu.Item>
+                                   </>)}
+                               </React.Fragment>
+                           )) }
+                       </Menu>}
+                   </React.StrictMode>
+               </div>
+
+               {/*<div className='column is-9'>*/}
+               {/*    {user?.id ? children : <Loader />}*/}
+               {/*</div>*/}
+           </div>
+       </>
     );
 };
 

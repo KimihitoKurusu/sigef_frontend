@@ -4,15 +4,15 @@ import {Button, Divider, Flex, Menu} from 'antd';
 import {helpers} from "./sider.helpers";
 import {useRouter} from 'next/navigation';
 import Title from "antd/lib/typography/Title";
-import useSidebarCollapsed from "@/Hooks/useSidebarCollapsed";
-import {CustomAutoCompleteInput} from "@/components";
+import {CustomModal, ElectionForm} from "@/components";
 import styles from './Sider.module.scss'
 import {PlusOutlined} from "@ant-design/icons";
+
 const MySider: React.FC = () => {
     const [openKeys, setOpenKeys] = useState([])
     const route = useRouter().route
     const [currentActiveKey, setCurrentActiveKey] = useState<string>(null)
-    // const isSiderCollapsed = useSidebarCollapsed()
+    const [isModalVisible, setIsModalVisible] = useState(false)
     const sections = helpers.menuSections()
 
 
@@ -59,6 +59,7 @@ const MySider: React.FC = () => {
                         style={{ width: '90%' }}
                         icon={<PlusOutlined />}
                         size='large'
+                        onClick={()=> setIsModalVisible(true)}
                     >
                          Crear Elección
                     </Button>
@@ -99,11 +100,20 @@ const MySider: React.FC = () => {
                                        </Menu.Item>
                                    </>)}
                                </React.Fragment>
-                           )) }
+                           ))}
                        </Menu>}
                    </React.StrictMode>
                </div>
            </div>
+           <CustomModal
+               title='Crear Elección'
+               destroyOnClose
+               open={isModalVisible}
+               onCancel={() => setIsModalVisible(false)}
+               footer={null}
+           >
+               <ElectionForm/>
+           </CustomModal>
        </>
     );
 };

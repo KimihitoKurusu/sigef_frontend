@@ -32,13 +32,21 @@ body {
 /*  }*/
 /*}*/
 
-:where(*){
+:where(*) {
   font-family: 'Roboto Slab', fallback, sans-serif;
 }
-:where(.css-dev-only-do-not-override-1qhpsh8).ant-menu-light:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):hover, :where(.css-dev-only-do-not-override-1qhpsh8).ant-menu-light>.ant-menu:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):hover{
+
+:where(.css-dev-only-do-not-override-1qhpsh8).ant-menu-light:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):hover, :where(.css-dev-only-do-not-override-1qhpsh8).ant-menu-light > .ant-menu:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):hover {
   color: #00bbff;
 }
 
-.primary-btn{
+.primary-btn {
   background-color: #1890ff;
+}
+
+div > ul > li > button.ant-btn.css-dev-only-do-not-override-1qhpsh8.ant-btn-primary.ant-btn-sm {
+  background-color: #1890ff;
+}
+.ant-switch.css-dev-only-do-not-override-1qhpsh8{
+  background-color: #bfbfbf;
 }

@@ -40,9 +40,19 @@ const getLink = (
 
 
 const menuSections = (isAdmin: boolean = false): SidebarSection[] => [
+    // { // Election
+    //     key: 'election', icon: <FaVoteYea/>,
+    //     children: getLink('Crear Election', `/backoffice/election`),
+    //     isVisible: true
+    // },
     { // Election
-        key: 'election', icon: <FaVoteYea/>,
-        children: getLink('Election', `/backoffice/election`),
+        key: 'fice', icon: <FaVoteYea/>,
+        children: getLink('FICE', `/backoffice/election`),
+        isVisible: true
+    },
+    { // Election
+        key: 'facom', icon: <FaVoteYea/>,
+        children: getLink('FACOM', `/backoffice/election`),
         isVisible: true
     },
 

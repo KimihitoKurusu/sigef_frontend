@@ -11,8 +11,8 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+    --background-start-rgb: 235, 235, 235, 92;
+    --background-end-rgb: 235, 235, 235, 92;
   }
 }
 @font-face {
@@ -22,23 +22,23 @@
   font-style: normal;
 }
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-          to bottom,
-          transparent,
-          rgb(var(--background-end-rgb))
-  ) rgb(var(--background-start-rgb));
+  color: #d8d8da;
+  background-color: #353535;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
-}
+/*@layer utilities {*/
+/*  .text-balance {*/
+/*    text-wrap: balance;*/
+/*  }*/
+/*}*/
 
 :where(*){
   font-family: 'Roboto Slab', fallback, sans-serif;
 }
 :where(.css-dev-only-do-not-override-1qhpsh8).ant-menu-light:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):hover, :where(.css-dev-only-do-not-override-1qhpsh8).ant-menu-light>.ant-menu:not(.ant-menu-horizontal) .ant-menu-item:not(.ant-menu-item-selected):hover{
   color: #00bbff;
+}
+
+.primary-btn{
+  background-color: #1890ff;
 }

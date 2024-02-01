@@ -14,12 +14,12 @@ function getItem(
     label?: React.ReactNode,
     key?: React.Key | null,
     icon?: React.ReactNode,
-    children?: MenuItem[],
+    items?: MenuItem[],
 ): MenuItem {
     return {
         key,
         icon,
-        children,
+        items,
         label,
     } as MenuItem;
 }

@@ -1,24 +1,25 @@
 import React, {useEffect, useState} from 'react';
 import type {MenuProps} from 'antd';
-import {Divider, Menu} from 'antd';
+import {Button, Divider, Flex, Menu} from 'antd';
 import {helpers} from "./sider.helpers";
 import {useRouter} from 'next/navigation';
 import Title from "antd/lib/typography/Title";
 import useSidebarCollapsed from "@/Hooks/useSidebarCollapsed";
 import {CustomAutoCompleteInput} from "@/components";
-
+import styles from './Sider.module.scss'
+import {PlusOutlined} from "@ant-design/icons";
 const MySider: React.FC = () => {
     const [openKeys, setOpenKeys] = useState([])
     const route = useRouter().route
     const [currentActiveKey, setCurrentActiveKey] = useState<string>(null)
-    const isSiderCollapsed = useSidebarCollapsed()
+    // const isSiderCollapsed = useSidebarCollapsed()
     const sections = helpers.menuSections()
 
 
     const onClick: MenuProps['onClick'] = (e) => {
         console.log('click ', e);
     };
-    console.log('isSiderCollapsed', isSiderCollapsed)
+    // console.log('isSiderCollapsed', isSiderCollapsed)
 
     const onOpenChange: MenuProps['onOpenChange'] = keys => {
         const latestOpenKey = keys.find(key => openKeys.indexOf(key) === -1)
@@ -41,21 +42,32 @@ const MySider: React.FC = () => {
        <>
            <div className={`columns`}>
                <div className={'column is-3 is-full-width-mobile'}>
-                   <div className='flex flex-col items-center'>
+                   <div className='flex flex-col items-center mt-10'>
                        <div className='mb-4 w-max transition-transform'>
                            <Title
-                               style={{color: 'white', fontFamily: 'Permanent Marker'}}
-                               level={!isSiderCollapsed ? 2 : 5}
+                               style={{fontFamily: 'Permanent Marker'}}
+                               level={2}
                            >
                                SIGEF
                            </Title>
                        </div>
                    </div>
-                   <Divider orientation="right" orientationMargin={50}/>
+                   <Divider/>
+                   <Flex vertical gap="small" align='center' justify={'center'}>
+                    <Button
+                        type="dashed"
+                        style={{ width: '90%' }}
+                        icon={<PlusOutlined />}
+                        size='large'
+                    >
+                         Crear Elección
+                    </Button>
+                   </Flex>
                    <React.StrictMode>
                        {<Menu
+                           className={styles['menu-item']}
                            mode='inline'
-                           style={{backgroundColor: 'transparent', color: '#FFFFFF'}}
+                           style={{backgroundColor: 'transparent'}}
                            openKeys={openKeys}
                            onOpenChange={onOpenChange}
                            activeKey={currentActiveKey}
@@ -91,10 +103,6 @@ const MySider: React.FC = () => {
                        </Menu>}
                    </React.StrictMode>
                </div>
-
-               {/*<div className='column is-9'>*/}
-               {/*    {user?.id ? children : <Loader />}*/}
-               {/*</div>*/}
            </div>
        </>
     );

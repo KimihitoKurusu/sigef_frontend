@@ -30,7 +30,6 @@ const gridStyle: React.CSSProperties = {
     textAlign: 'center',
 };
 export default function Election() {
-
     return (
         <main className="flex min-h-screen flex-col items-center p-5" style={{color: 'black'}}>
             <PageTitle>

@@ -12,10 +12,13 @@ import ElectionForm from "@/components/Election/ElectionForm";
 import CustomInputNumber from "@/components/base/custom-inputs/CustomInputNumber/CustomInputNumber";
 import CustomDatePicker from "@/components/base/custom-inputs/CustomDatePicker/CustomDatePicker";
 import CustomSwitch from "@/components/base/custom-inputs/CustomSwitch/CustomSwitch";
+import CustomCard from "./custom-components/CustomCard/CustomCard";
+
 export {
     MySider,
     MyHeader,
     PageTitle,
+    CustomCard,
     CustomModal,
     CustomSwitch,
     CustomSelect,

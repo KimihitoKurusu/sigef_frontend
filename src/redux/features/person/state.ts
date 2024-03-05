@@ -1,9 +1,9 @@
-import { ElectionType } from '@/types/types';
+import { PersonType } from '@/types/types'
 
 const initialState = {
- elections: [] as ElectionType[],
+ people: [] as PersonType[],
  status: 'idle',
  error: null,
-};
+}
 
 export default initialState

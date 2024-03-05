@@ -1,18 +1,52 @@
-import { PayloadAction } from '@reduxjs/toolkit'
-import { initialState } from './state'
-import { UserType } from '../../../types/types'
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import apiClient from '@/redux/axios/apiClient'
 
-const logOut = () => initialState
-const logIn = (_: any, action: PayloadAction<UserType>) => {
-	return {
-		token: action.payload.token,
-		refresh: action.payload.refresh,
-		user_id: action.payload.user_id,
-		username: action.payload.username,
+export const loginUser = createAsyncThunk(
+	'auth/loginUser',
+	async ({ username, password }, thunkAPI) => {
+		try {
+			const response = await apiClient.post('/token/', {
+				username,
+				password,
+			})
+			return response.data
+		} catch (error) {
+			return thunkAPI.rejectWithValue(error.response.data)
+		}
 	}
+)
+
+export const logoutUser = createAsyncThunk(
+	'auth/logoutUser',
+	async (_, thunkAPI) => {
+		sessionStorage.removeItem('token')
+		sessionStorage.removeItem('refresh')
+		sessionStorage.removeItem('user_id')
+		sessionStorage.removeItem('username')
+	}
+)
+
+const extraReducers = builder => {
+	builder
+		.addCase(loginUser.pending, state => {
+			state.loading = true
+		})
+		.addCase(loginUser.fulfilled, (state, action) => {
+			state.loading = false
+			state.isAuthenticated = true
+			state.user = action.payload.user
+			state.token = action.payload.token
+		})
+		.addCase(loginUser.rejected, (state, action) => {
+			state.loading = false
+			state.isAuthenticated = false
+			state.error = action.error.message || 'Failed to log in'
+		})
+		.addCase(logoutUser.fulfilled, state => {
+			state.isAuthenticated = false
+			state.user = null
+			state.token = null
+		})
 }
 
-const reducers = { logIn, logOut }
-
-export { logIn, logOut }
-export default reducers
+export default extraReducers

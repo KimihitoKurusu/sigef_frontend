@@ -1,8 +1,11 @@
-import { UserType } from '../../../types/types'
+import { UserType } from '@/types/types'
 
-export const initialState = {
-	token: '',
-	refresh: '',
-	user_id: 1,
-	username: 'admin',
-} as UserType
+const initialState = {
+ loading: false,
+ isAuthenticated: false,
+ user: null,
+ token: null,
+ error: null,
+};
+
+export default initialState

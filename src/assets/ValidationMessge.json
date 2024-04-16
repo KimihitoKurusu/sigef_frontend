@@ -1,0 +1,6 @@
+{
+  "Form": {
+    "Required": "Este campo es requerido",
+    "OnlyIntegers": "Este campo solo acepta números enteros"
+  }
+}

@@ -1,6 +1,7 @@
 "use client"
-import React from "react";
-import {PageTitle} from "@/components";
+import React, { useState } from "react"
+import {CustomSelect, PageTitle} from "@/components"
+import type {CustomSelectProps} from '@/components'
 import {
     Button, Card,
     Cascader,
@@ -11,32 +12,63 @@ import {
     Mentions,
     Select,
     TreeSelect,
-} from 'antd';
+} from 'antd'
 
-const { RangePicker } = DatePicker;
+const { RangePicker } = DatePicker
 
 const formItemLayout = {
     labelCol: {
         xs: { span: 24 },
-        sm: { span: 6 },
+        sm: { span: 12 },
     },
     wrapperCol: {
         xs: { span: 24 },
-        sm: { span: 14 },
+        sm: { span: 12 },
     },
-};
+}
 const gridStyle: React.CSSProperties = {
     width: '25%',
     textAlign: 'center',
-};
+}
 export default function Election() {
+
+    const [selectedElectionType, setSelectedElectionType] = useState<string>('')
+
+    const electionTypeOptions: CustomSelectProps = {
+        placeholder: 'Seleccione el tipo de elección',
+        options: [
+            {
+                value: 'institution',
+                label: 'Institución',
+            },
+            {
+                value: 'campus',
+                label: 'Sede',
+            },
+            {
+                value: 'faculty',
+                label: 'Facultad',
+            }
+        ],
+        selected: selectedElectionType,
+        onSelectionChange: setSelectedElectionType
+    }
+
     return (
         <main className="flex min-h-screen flex-col items-center p-5" style={{color: 'black'}}>
             <PageTitle>
-                Crear Election
+                Crear Elección
             </PageTitle>
             <Card className="flex flex-col items-center p-5" style={{ width: 1000 }}>
-                <Form {...formItemLayout} variant="filled" style={{ maxWidth: 600 }}>
+                <Form {...formItemLayout} variant="filled" style={{ maxWidth: '100%' }}>
+                <Form.Item
+                        label="Tipo de Elección"
+                        name="Cascader"
+                        rules={[{ required: true, message: 'Please input!' }]}
+                    >
+                        <CustomSelect {...electionTypeOptions} />
+                    </Form.Item>
+
                     <Form.Item label="Input" name="Input" rules={[{ required: true, message: 'Please input!' }]}>
                         <Input />
                     </Form.Item>

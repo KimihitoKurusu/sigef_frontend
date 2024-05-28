@@ -33,14 +33,14 @@ const CustomSelect: React.FC<CustomSelectProps> = props => {
 	) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 
 	return (
-		<Select
-			showSearch
-			placeholder={placeholder}
-			optionFilterProp='children'
-			onChange={onChange}
-			onSearch={onSearch}
-			filterOption={filterOption}
-			options={options}
+  <Select
+    showSearch
+    placeholder={placeholder}
+    optionFilterProp='children'
+    onChange={onChange}
+    onSearch={onSearch}
+    filterOption={filterOption}
+    options={options}
 		/>
 	)
 }

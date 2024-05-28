@@ -1,26 +1,26 @@
-import React from 'react';
-import type {GetProps, SelectProps} from 'antd';
-import {DatePicker, Form} from 'antd';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import ValidationMessage from "@/assets/ValidationMessge.json";
+import React from 'react'
+import type {GetProps, SelectProps} from 'antd'
+import {DatePicker, Form} from 'antd'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import ValidationMessage from '@/assets/ValidationMessge.json'
 
-dayjs.extend(customParseFormat);
+dayjs.extend(customParseFormat)
 type RangePickerProps = GetProps<typeof DatePicker.RangePicker>;
 
 
 const range = (start: number, end: number) => {
-    const result = [];
+    const result = []
     for (let i = start; i < end; i++) {
-        result.push(i);
+        result.push(i)
     }
-    return result;
-};
+    return result
+}
 // eslint-disable-next-line arrow-body-style
 const disabledDate: RangePickerProps['disabledDate'] = (current) => {
     // Can not select days before today and today
-    return current && current < dayjs().endOf('day');
-};
+    return current && current < dayjs().endOf('day')
+}
 
 
 interface CustomDatePickerProps extends SelectProps {
@@ -48,16 +48,16 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = (props) => {
     }
 
     return (
-        <Form.Item label={label} name={name} rules={rules}>
-            <DatePicker
-                onChange={onChangeValue}
-                format="YYYY-MM-DD HH:mm"
-                disabledDate={disabledDate}
-                showTime={{defaultValue: dayjs('00:00:00', 'HH:mm')}}
+      <Form.Item label={label} name={name} rules={rules}>
+        <DatePicker
+          onChange={onChangeValue}
+          format='YYYY-MM-DD HH:mm'
+          disabledDate={disabledDate}
+          showTime={{defaultValue: dayjs('00:00:00', 'HH:mm')}}
             />
-        </Form.Item>
+      </Form.Item>
 
-    );
+    )
 }
 
-export default CustomDatePicker;
+export default CustomDatePicker

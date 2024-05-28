@@ -32,16 +32,16 @@ const CustomInputNumber: React.FC<CustomInputNumberProps> = (props) => {
     } = props
 
     const tooltipButton = (
-        <Tooltip title={toogleText} color={'blue'}>
-            <Button
-                type='primary'
-                htmlType='submit'
-                shape='circle'
-                onClick={handleToggleClick}
-                className='radius-100'
-                icon={<PlusOutlined />}
+      <Tooltip title={toogleText} color={'blue'}>
+        <Button
+          type='primary'
+          htmlType='submit'
+          shape='circle'
+          onClick={handleToggleClick}
+          className='radius-100'
+          icon={<PlusOutlined />}
             />
-        </Tooltip>
+      </Tooltip>
     )
 
     const hasTooltip = () => handleToggleClick !== null
@@ -53,11 +53,11 @@ const CustomInputNumber: React.FC<CustomInputNumberProps> = (props) => {
     }
 
     return (
-        <>
-            <Form.Item
-                label={label}
-                name={name}
-                rules={[
+      <>
+        <Form.Item
+          label={label}
+          name={name}
+          rules={[
                     { required, message: ValidationMessage.Form.Required },
                     {
                         pattern: /^[0-9]*$/,
@@ -65,19 +65,19 @@ const CustomInputNumber: React.FC<CustomInputNumberProps> = (props) => {
                     },
                 ]}
             >
-                <InputNumber
-                    type={'number'}
-                    onChange={handleOnChange}
-                    placeholder={placeholder}
-                    min={min ? min : Number.MIN_SAFE_INTEGER}
-                    max={max? max: Number.MAX_SAFE_INTEGER}
-                    className={styles['custom-input-number']}
-                    size='large'
-                    addonAfter={hasTooltip() ? tooltipButton : null}
-                    {...restProps}
+          <InputNumber
+            type={'number'}
+            onChange={handleOnChange}
+            placeholder={placeholder}
+            min={min ? min : Number.MIN_SAFE_INTEGER}
+            max={max? max: Number.MAX_SAFE_INTEGER}
+            className={styles['custom-input-number']}
+            size='large'
+            addonAfter={hasTooltip() ? tooltipButton : null}
+            {...restProps}
                 />
-            </Form.Item>
-        </>
+        </Form.Item>
+      </>
     )
 }
 

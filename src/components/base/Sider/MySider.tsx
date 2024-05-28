@@ -1,7 +1,7 @@
-import React from 'react';
-import {AppstoreOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons';
-import type {MenuProps} from 'antd';
-import {Menu} from 'antd';
+import React from 'react'
+import {AppstoreOutlined, MailOutlined, SettingOutlined} from '@ant-design/icons'
+import type {MenuProps} from 'antd'
+import {Menu} from 'antd'
 
 type MenuItem = Required<MenuProps>['items'][number];
 
@@ -18,7 +18,7 @@ function getItem(
         children,
         label,
         type,
-    } as MenuItem;
+    } as MenuItem
 }
 
 const items: MenuProps['items'] = [
@@ -53,20 +53,20 @@ const items: MenuProps['items'] = [
         getItem('Option 11', '11'),
         getItem('Option 12', '12'),
     ]),
-];
+]
 
 const MySider: React.FC = () => {
     const onClick: MenuProps['onClick'] = (e) => {
-        console.log('click ', e);
-    };
+        console.log('click ', e)
+    }
 
     return (
-        <Menu
-            onClick={onClick}
-            mode="inline"
-            items={items}
+      <Menu
+        onClick={onClick}
+        mode='inline'
+        items={items}
         />
-    );
-};
+    )
+}
 
-export default MySider;
+export default MySider

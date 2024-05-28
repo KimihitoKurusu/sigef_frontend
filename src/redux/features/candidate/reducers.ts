@@ -45,33 +45,33 @@ export const deleteCandidate = createAsyncThunk(
 const extraReducers = (builder) => {
     builder
       .addCase(fetchCandidates.pending, (state) => {
-        state.status = 'loading';
+        state.status = 'loading'
       })
       .addCase(fetchCandidates.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        state.candidates = action.payload;
+        state.status = 'succeeded'
+        state.candidates = action.payload
       })
       .addCase(fetchCandidates.rejected, (state, action) => {
-        state.status = 'failed';
-        state.error = action.error.message;
+        state.status = 'failed'
+        state.error = action.error.message
       })
       .addCase(createCandidate.fulfilled, (state, action) => {
-        state.candidates.push(action.payload);
+        state.candidates.push(action.payload)
       })
       .addCase(updateCandidate.fulfilled, (state, action) => {
-        const index = state.candidates.findIndex((c) => c.person.ci === action.payload.person.ci);
+        const index = state.candidates.findIndex((c) => c.person.ci === action.payload.person.ci)
         if (index !== -1) {
-          state.candidates[index] = action.payload;
+          state.candidates[index] = action.payload
         }
       })
       .addCase(patchCandidate.fulfilled, (state, action) => {
-        const index = state.candidates.findIndex((c) => c.person.ci === action.payload.person.ci);
+        const index = state.candidates.findIndex((c) => c.person.ci === action.payload.person.ci)
         if (index !== -1) {
-          state.candidates[index] = { ...state.candidates[index], ...action.payload };
+          state.candidates[index] = { ...state.candidates[index], ...action.payload }
         }
       })
       .addCase(deleteCandidate.fulfilled, (state, action) => {
-        state.candidates = state.candidates.filter((c) => c.person.ci !== action.payload);
+        state.candidates = state.candidates.filter((c) => c.person.ci !== action.payload)
       })
  }
 

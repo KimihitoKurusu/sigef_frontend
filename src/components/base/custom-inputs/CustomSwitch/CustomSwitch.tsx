@@ -1,27 +1,27 @@
-import React from 'react';
-import type {GetProps, SelectProps} from 'antd';
-import {DatePicker, Form, Switch} from 'antd';
-import dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
-import ValidationMessage from "@/assets/ValidationMessge.json";
-import {CheckOutlined, CloseOutlined} from "@ant-design/icons";
+import React from 'react'
+import type {GetProps, SelectProps} from 'antd'
+import {DatePicker, Form, Switch} from 'antd'
+import dayjs from 'dayjs'
+import customParseFormat from 'dayjs/plugin/customParseFormat'
+import ValidationMessage from '@/assets/ValidationMessge.json'
+import {CheckOutlined, CloseOutlined} from '@ant-design/icons'
 
-dayjs.extend(customParseFormat);
+dayjs.extend(customParseFormat)
 type RangePickerProps = GetProps<typeof DatePicker.RangePicker>;
 
 
 const range = (start: number, end: number) => {
-    const result = [];
+    const result = []
     for (let i = start; i < end; i++) {
-        result.push(i);
+        result.push(i)
     }
-    return result;
-};
+    return result
+}
 // eslint-disable-next-line arrow-body-style
 const disabledDate: RangePickerProps['disabledDate'] = (current) => {
     // Can not select days before today and today
-    return current && current < dayjs().endOf('day');
-};
+    return current && current < dayjs().endOf('day')
+}
 
 
 interface CustomDatePickerProps extends SelectProps {
@@ -51,16 +51,16 @@ const CustomSwitch: React.FC<CustomDatePickerProps> = (props) => {
     }
 
     return (
-        <Form.Item label={label} name={name} rules={rules}>
-            <Switch
-                disabled={disabled}
-                checkedChildren={<CheckOutlined />}
-                unCheckedChildren={<CloseOutlined />}
-                defaultChecked
+      <Form.Item label={label} name={name} rules={rules}>
+        <Switch
+          disabled={disabled}
+          checkedChildren={<CheckOutlined />}
+          unCheckedChildren={<CloseOutlined />}
+          defaultChecked
             />
-        </Form.Item>
+      </Form.Item>
 
-    );
+    )
 }
 
-export default CustomSwitch;
+export default CustomSwitch

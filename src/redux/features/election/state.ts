@@ -1,4 +1,4 @@
-import { ElectionType } from '@/types/types';
+import { ElectionType } from '@/types/types'
 
 interface ElectionStateType {
 	elections: ElectionType[]
@@ -10,6 +10,6 @@ const initialState: ElectionStateType = {
  elections: [] as ElectionType[],
  status: 'idle',
  error: null,
-};
+}
 
 export default initialState

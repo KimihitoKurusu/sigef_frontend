@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import ValidationMessage from "@/assets/ValidationMessge.json"
+import ValidationMessage from '@/assets/ValidationMessge.json'
 import React from 'react'
 import { Select, Form, SelectProps } from 'antd'
 import type { DefaultOptionType } from 'antd/lib/select'
@@ -41,19 +41,19 @@ const CustomSelect: React.FC<CustomSelectProps> = (props) => {
     }
 
     return (
-        <Form.Item label={label} name={name} rules={rules}>
-            <Select
-                {...restProps}
-                showSearch={showSearch}
-                optionFilterProp='children'
-                size='large'
-                className='select-input'
-                onChange={onChangeValue}
-                filterOption={(input, option) => handleFilterOption(input, option)}
+      <Form.Item label={label} name={name} rules={rules}>
+        <Select
+          {...restProps}
+          showSearch={showSearch}
+          optionFilterProp='children'
+          size='large'
+          className='select-input'
+          onChange={onChangeValue}
+          filterOption={(input, option) => handleFilterOption(input, option)}
             >
-                {children}
-            </Select>
-        </Form.Item>
+          {children}
+        </Select>
+      </Form.Item>
 
     )
 }

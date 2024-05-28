@@ -1,6 +1,6 @@
 import React from 'react'
 import Link from 'next/link'
-import {FaVoteYea} from "react-icons/fa";
+import {FaVoteYea} from 'react-icons/fa'
 
 interface SidebarSection {
     key: string,
@@ -30,13 +30,13 @@ const getLink = (
     url: string,
 ) => {
     return (
-        <Link href={url}>
-            <h3>
-                {label}
-            </h3>
-        </Link>
+      <Link href={url}>
+        <h3>
+          {label}
+        </h3>
+      </Link>
     )
-};
+}
 
 
 const menuSections = (isAdmin: boolean = false): SidebarSection[] => [
@@ -47,16 +47,16 @@ const menuSections = (isAdmin: boolean = false): SidebarSection[] => [
     // },
     { // Election
         key: 'fice', icon: <FaVoteYea/>,
-        children: getLink('FICE', `/backoffice/election`),
+        children: getLink('FICE', '/backoffice/election'),
         isVisible: true
     },
     { // Election
         key: 'facom', icon: <FaVoteYea/>,
-        children: getLink('FACOM', `/backoffice/election`),
+        children: getLink('FACOM', '/backoffice/election'),
         isVisible: true
     },
 
-];
+]
 export const helpers = {
     getLink,
     menuSections,

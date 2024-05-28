@@ -1,6 +1,6 @@
-import { createSlice } from "@reduxjs/toolkit"
-import extraReducers from "./reducers"
-import initialState from "./state"
+import { createSlice } from '@reduxjs/toolkit'
+import extraReducers from './reducers'
+import initialState from './state'
 
 const peopleSlice = createSlice({
     name: 'people',

@@ -76,82 +76,82 @@ const ElectionForm: React.FC = () => {
 	}
 
 	return (
-		<Form
-			name='basic'
-			labelCol={{ span: 8 }}
-			wrapperCol={{ span: 16 }}
-			style={{ maxWidth: 600 }}
-			initialValues={{ remember: true }}
-			onFinish={onFinish}
-			onFinishFailed={onFinishFailed}
-			autoComplete='off'
+  <Form
+    name='basic'
+    labelCol={{ span: 8 }}
+    wrapperCol={{ span: 16 }}
+    style={{ maxWidth: 600 }}
+    initialValues={{ remember: true }}
+    onFinish={onFinish}
+    onFinishFailed={onFinishFailed}
+    autoComplete='off'
 		>
-			<CustomSelect
-				label='Tipo de Eleción:'
-				name={'locationType'}
-				placeholder={'Tipo de Eleción'}
-				onChange={value => {
+    <CustomSelect
+      label='Tipo de Eleción:'
+      name={'locationType'}
+      placeholder={'Tipo de Eleción'}
+      onChange={value => {
 					if (typeof value === 'string')
 						setSelectedLocationType(locationType.find(item => item.value === value))
 				}}
-				required
+      required
 			>
-				{locationType?.map((item, index) => (
-					<Select.Option
-						value={item.value}
-						key={index}
+      {locationType?.map((item, index) => (
+        <Select.Option
+          value={item.value}
+          key={index}
 					>
-						{item.label}
-					</Select.Option>
+          {item.label}
+        </Select.Option>
 				))}
-			</CustomSelect>
+    </CustomSelect>
 
-			<CustomSelect
-				label='Localización:'
-				name={'location'}
-				placeholder={'Localización'}
-				required
+    <CustomSelect
+      label='Localización:'
+      name={'location'}
+      placeholder={'Localización'}
+      required
 			>
-				{manageLocation(selectedLocationType?.value) &&
+      {manageLocation(selectedLocationType?.value) &&
 					manageLocation(selectedLocationType?.value)?.map(
 						(item, idx) => (
-							<Select.Option
-								value={item.id}
-								key={idx}
+  <Select.Option
+    value={item.id}
+    key={idx}
 							>
-								{item.name}
-							</Select.Option>
+    {item.name}
+  </Select.Option>
 						)
 					)}
-			</CustomSelect>
+    </CustomSelect>
 
-			<CustomInputNumber
-				label={'Tamaño del Consejo:'}
-				name='volume_credits'
-				placeholder={'Tamaño del Consejo de la FEU'}
-				required
+    <CustomInputNumber
+      label={'Tamaño del Consejo:'}
+      name='volume_credits'
+      placeholder={'Tamaño del Consejo de la FEU'}
+      required
 			/>
 
-			<CustomDatePicker
-				label={'Tamaño del Consejo:'}
-				name='volume_credits'
-				required
+    <CustomDatePicker
+      label={'Tamaño del Consejo:'}
+      name='volume_credits'
+      required
 			/>
 
-			<CustomSwitch
-				label={'Activar elección'}
-				name='volume_credits'
+    <CustomSwitch
+      label={'Activar elección'}
+      name='volume_credits'
 			/>
-			<Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-				<Button
-					className='primary-btn'
-					type='primary'
-					htmlType='submit'
+    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+      <Button
+        className='primary-btn'
+        type='primary'
+        htmlType='submit'
 				>
-					Submit
-				</Button>
-			</Form.Item>
-		</Form>
+        Submit
+      </Button>
+    </Form.Item>
+  </Form>
 	)
 }
 

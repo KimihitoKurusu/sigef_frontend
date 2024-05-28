@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-let observer = null;
-const config = { attributes: true, childList: false, subtree: false };
+import React, { useState, useEffect } from 'react'
+let observer = null
+const config = { attributes: true, childList: false, subtree: false }
 function useSidebarCollapsed() {
-    const [isCollapsed, setIsCollapsed] = useState(false);
+    const [isCollapsed, setIsCollapsed] = useState(false)
     // function startObserving(targetNode, config) {
     //     const callback = function(mutationsList, observer) {
     //         for(let mutation of mutationsList) {
@@ -32,6 +32,6 @@ function useSidebarCollapsed() {
     //     startObserving(targetNode, config)
     // });
 
-    return isCollapsed;
+    return isCollapsed
 }
 export default useSidebarCollapsed

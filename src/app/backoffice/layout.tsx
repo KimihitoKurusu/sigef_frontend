@@ -41,30 +41,30 @@ export default function RootLayout({
 	children: React.ReactNode
 }>) {
 	return (
-		<html lang='en'>
-			<CustomProvider>
-				<body className={inter.className}>
-					<Layout
-						siderBg={'#ffffff'}
-						style={layoutStyle}
+  <html lang='en'>
+    <CustomProvider>
+      <body className={inter.className}>
+        <Layout
+          siderBg={'#ffffff'}
+          style={layoutStyle}
 					>
-						<Sider
-							collapsible
-							width='20%'
-							style={siderStyle}
+          <Sider
+            collapsible
+            width='20%'
+            style={siderStyle}
 						>
-							<MySider />
-						</Sider>
-						<Layout>
-							<Header className={`${styles['header']}`}>
-								<MyHeader />
-							</Header>
-							<Content style={contentStyle}>{children}</Content>
-							<Footer style={footerStyle}>Footer</Footer>
-						</Layout>
-					</Layout>
-				</body>
-			</CustomProvider>
-		</html>
+            <MySider />
+          </Sider>
+          <Layout>
+            <Header className={`${styles['header']}`}>
+              <MyHeader />
+            </Header>
+            <Content style={contentStyle}>{children}</Content>
+            <Footer style={footerStyle}>Footer</Footer>
+          </Layout>
+        </Layout>
+      </body>
+    </CustomProvider>
+  </html>
 	)
 }

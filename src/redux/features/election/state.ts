@@ -1,6 +1,12 @@
 import { ElectionType } from '@/types/types';
 
-const initialState = {
+interface ElectionStateType {
+	elections: ElectionType[]
+	status: 'loading' | 'succeeded' | 'failed' | 'idle'
+	error: string | null
+}
+
+const initialState: ElectionStateType = {
  elections: [] as ElectionType[],
  status: 'idle',
  error: null,

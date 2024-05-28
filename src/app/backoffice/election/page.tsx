@@ -1,6 +1,6 @@
 "use client"
-import React, { useState } from "react"
-import {CustomSelect, PageTitle} from "@/components"
+import React, { useEffect, useState } from "react"
+import {CustomSelect, ElectionForm, PageTitle} from "@/components"
 import type {CustomSelectProps} from '@/components'
 import {
     Button, Card,
@@ -34,6 +34,7 @@ export default function Election() {
 
     const [selectedElectionType, setSelectedElectionType] = useState<string>('')
 
+
     const electionTypeOptions: CustomSelectProps = {
         placeholder: 'Seleccione el tipo de elección',
         options: [
@@ -60,7 +61,7 @@ export default function Election() {
                 Crear Elección
             </PageTitle>
             <Card className="flex flex-col items-center p-5" style={{ width: 1000 }}>
-                <Form {...formItemLayout} variant="filled" style={{ maxWidth: '100%' }}>
+                {/* <Form {...formItemLayout} variant="filled" style={{ maxWidth: '100%' }}>
                 <Form.Item
                         label="Tipo de Elección"
                         name="Cascader"
@@ -138,7 +139,8 @@ export default function Election() {
                             Submit
                         </Button>
                     </Form.Item>
-                </Form>
+                </Form> */}
+                <ElectionForm/>
             </Card>
         </main>
     );

@@ -32,7 +32,7 @@ interface CustomDatePickerProps extends SelectProps {
     disabled?: boolean
 }
 
-const CustomDatePicker: React.FC<CustomDatePickerProps> = (props) => {
+const CustomSwitch: React.FC<CustomDatePickerProps> = (props) => {
     const {
         label= '',
         name = '',
@@ -63,4 +63,4 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = (props) => {
     );
 }
 
-export default CustomDatePicker;
+export default CustomSwitch;

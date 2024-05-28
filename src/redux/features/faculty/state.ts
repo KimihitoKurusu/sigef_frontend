@@ -1,6 +1,12 @@
 import { FacultyType } from '@/types/types'
 
-const initialState = {
+interface FacultyStateType {
+	faculties: FacultyType[]
+	status: 'loading' | 'succeeded' | 'failed' | 'idle'
+	error: string | null
+}
+
+const initialState: FacultyStateType = {
 	faculties: [] as FacultyType[],
 	status: 'idle',
 	error: null,

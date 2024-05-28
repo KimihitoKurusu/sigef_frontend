@@ -1,11 +1,13 @@
 import axios from 'axios'
 
 const apiClient = axios.create({
- baseURL: 'http://localhost:8000/api/',
+ baseURL: 'http://0.0.0.0:8000/api/',
 })
 
+
+
 apiClient.interceptors.request.use((config) => {
- const token = sessionStorage.getItem('token')
+ const token = sessionStorage.getItem('token') // || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5MzUzNTc4LCJpYXQiOjE3MTY3NjE1NzgsImp0aSI6ImIzOThhYzcwNDUyMzRkYjFiMGY2YjA5MDUxYjM4NDk5IiwidXNlcl9pZCI6MX0.8ysutgGWdvMqTttQYkZmwKqn3sjZ6EFvL8umbBDFwz0'
  if (token) {
     config.headers['Authorization'] = `Bearer ${token}`
  }
@@ -16,7 +18,7 @@ apiClient.interceptors.request.use((config) => {
 
 apiClient.interceptors.response.use(null, async (error) => {
  if (error.response && error.response.status === 401) {
-    const refresh = sessionStorage.getItem('refresh')
+    const refresh = sessionStorage.getItem('refresh') // || "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoicmVmcmVzaCIsImV4cCI6MTcxNjg0Nzk3OCwiaWF0IjoxNzE2NzYxNTc4LCJqdGkiOiI0N2QzZGZlNWY2YjU0OTc2YWExYzVkMDAyMDc5ZDA5ZCIsInVzZXJfaWQiOjF9.Ncdc1BXkcsDnmurBcykwzYA9oNTMhltrvPwXO3VAKfw"
     if (refresh) {
       try {
         const response = await apiClient.post('/token/refresh/', { refresh })

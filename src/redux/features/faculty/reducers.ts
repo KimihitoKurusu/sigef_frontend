@@ -2,42 +2,42 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from '@/redux/axios/apiClient'
 import { FacultyType } from '@/types/types'
 
-export const fetchFaculties = createAsyncThunk(
+const fetchFaculties = createAsyncThunk(
 	'faculties/fetchFaculties',
 	async () => {
-		const response = await apiClient.get('/faculties/')
+		const response = await apiClient.get('elections/faculties/')
 		return response.data
 	}
 )
 
-export const createFaculty = createAsyncThunk(
+const createFaculty = createAsyncThunk(
 	'faculties/createFaculty',
 	async (faculty: FacultyType) => {
-		const response = await apiClient.post('/faculties/', faculty)
+		const response = await apiClient.post('elections/faculties/', faculty)
 		return response.data
 	}
 )
 
-export const updateFaculty = createAsyncThunk(
+const updateFaculty = createAsyncThunk(
 	'faculties/updateFaculty',
 	async ({ id, faculty }: { id: number; faculty: FacultyType }) => {
-		const response = await apiClient.put(`/faculties/${id}/`, faculty)
+		const response = await apiClient.put(`elections/faculties/${id}/`, faculty)
 		return response.data
 	}
 )
 
-export const patchFaculty = createAsyncThunk(
+const patchFaculty = createAsyncThunk(
 	'faculties/patchFaculty',
 	async ({ id, faculty }: { id: number; faculty: Partial<FacultyType> }) => {
-		const response = await apiClient.patch(`/faculties/${id}/`, faculty)
+		const response = await apiClient.patch(`elections/faculties/${id}/`, faculty)
 		return response.data
 	}
 )
 
-export const deleteFaculty = createAsyncThunk(
+const deleteFaculty = createAsyncThunk(
 	'faculties/deleteFaculty',
 	async (id: number) => {
-		await apiClient.delete(`/faculties/${id}/`)
+		await apiClient.delete(`elections/faculties/${id}/`)
 		return id
 	}
 )
@@ -82,6 +82,14 @@ const extraReducers = builder => {
 				f => f.id !== action.payload
 			)
 		})
+}
+
+export {
+	fetchFaculties,
+	createFaculty,
+	updateFaculty,
+	patchFaculty,
+	deleteFaculty,
 }
 
 export default extraReducers

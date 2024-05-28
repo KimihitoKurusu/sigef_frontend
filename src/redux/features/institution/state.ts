@@ -1,9 +1,15 @@
-import { InstitutionType } from '@/types/types'
+import type { InstitutionType } from '@/types/types'
 
-const initialState = {
- institutions: [] as InstitutionType[],
- status: 'idle',
- error: null,
-};
+export interface InstitutionStateType {
+	institutions: InstitutionType[]
+	status: 'loading' | 'succeeded' | 'failed' | 'idle'
+	error: string | null
+}
+
+const initialState: InstitutionStateType = {
+	institutions: [] as InstitutionType[],
+	status: 'idle',
+	error: null,
+}
 
 export default initialState

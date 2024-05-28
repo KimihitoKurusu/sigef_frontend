@@ -1,4 +1,4 @@
-import { UserType } from '@/types/types'
+
 
 const initialState = {
  loading: false,

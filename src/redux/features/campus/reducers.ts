@@ -5,7 +5,7 @@ import { CampusType } from '@/types/types'
 export const fetchCampuses = createAsyncThunk(
 	'campuses/fetchCampuses',
 	async () => {
-		const response = await apiClient.get('/campuses/')
+		const response = await apiClient.get('elections/campuses/')
 		return response.data
 	}
 )
@@ -13,7 +13,7 @@ export const fetchCampuses = createAsyncThunk(
 export const createCampus = createAsyncThunk(
 	'campuses/createCampus',
 	async (campus: CampusType) => {
-		const response = await apiClient.post('/campuses/', campus)
+		const response = await apiClient.post('elections/campuses/', campus)
 		return response.data
 	}
 )
@@ -21,7 +21,7 @@ export const createCampus = createAsyncThunk(
 export const updateCampus = createAsyncThunk(
 	'campuses/updateCampus',
 	async ({ id, campus }: { id: number; campus: CampusType }) => {
-		const response = await apiClient.put(`/campuses/${id}/`, campus)
+		const response = await apiClient.put(`elections/campuses/${id}/`, campus)
 		return response.data
 	}
 )
@@ -29,7 +29,7 @@ export const updateCampus = createAsyncThunk(
 export const patchCampus = createAsyncThunk(
 	'campuses/patchCampus',
 	async ({ id, campus }: { id: number; campus: Partial<CampusType> }) => {
-		const response = await apiClient.patch(`/campuses/${id}/`, campus)
+		const response = await apiClient.patch(`elections/campuses/${id}/`, campus)
 		return response.data
 	}
 )
@@ -37,7 +37,7 @@ export const patchCampus = createAsyncThunk(
 export const deleteCampus = createAsyncThunk(
 	'campuses/deleteCampus',
 	async (id: number) => {
-		await apiClient.delete(`/campuses/${id}/`)
+		await apiClient.delete(`elections/campuses/${id}/`)
 		return id
 	}
 )

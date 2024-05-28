@@ -2,23 +2,23 @@ import { createAsyncThunk } from '@reduxjs/toolkit'
 import apiClient from '@/redux/axios/apiClient'
 import { InstitutionType } from '@/types/types'
 
-export const fetchInstitutions = createAsyncThunk(
+const fetchInstitutions = createAsyncThunk(
 	'institutions/fetchInstitutions',
 	async () => {
-		const response = await apiClient.get('/institutions/')
+		const response = await apiClient.get('elections/institutions/')
 		return response.data
 	}
 )
 
-export const createInstitution = createAsyncThunk(
+const createInstitution = createAsyncThunk(
 	'institutions/createInstitution',
 	async (institution: InstitutionType) => {
-		const response = await apiClient.post('/institutions/', institution)
+		const response = await apiClient.post('elections/institutions/', institution)
 		return response.data
 	}
 )
 
-export const updateInstitution = createAsyncThunk(
+const updateInstitution = createAsyncThunk(
 	'institutions/updateInstitution',
 	async ({
 		id,
@@ -28,14 +28,14 @@ export const updateInstitution = createAsyncThunk(
 		institution: InstitutionType
 	}) => {
 		const response = await apiClient.put(
-			`/institutions/${id}/`,
+			`elections/institutions/${id}/`,
 			institution
 		)
 		return response.data
 	}
 )
 
-export const patchInstitution = createAsyncThunk(
+const patchInstitution = createAsyncThunk(
 	'institutions/patchInstitution',
 	async ({
 		id,
@@ -45,17 +45,17 @@ export const patchInstitution = createAsyncThunk(
 		institution: Partial<InstitutionType>
 	}) => {
 		const response = await apiClient.patch(
-			`/institutions/${id}/`,
+			`elections/institutions/${id}/`,
 			institution
 		)
 		return response.data
 	}
 )
 
-export const deleteInstitution = createAsyncThunk(
+const deleteInstitution = createAsyncThunk(
 	'institutions/deleteInstitution',
 	async (id: number) => {
-		await apiClient.delete(`/institutions/${id}/`)
+		await apiClient.delete(`elections/institutions/${id}/`)
 		return id
 	}
 )
@@ -100,6 +100,14 @@ const extraReducers = builder => {
 				i => i.id !== action.payload
 			)
 		})
+}
+
+export {
+	fetchInstitutions,
+	createInstitution,
+	updateInstitution,
+	patchInstitution,
+	deleteInstitution,
 }
 
 export default extraReducers

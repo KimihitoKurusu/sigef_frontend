@@ -1,5 +1,5 @@
 import React from 'react'
-import { Select } from 'antd'
+import { Form, Select } from 'antd'
 import { SelectProps } from 'antd/lib'
 
 interface SelectOptionsProps {
@@ -10,12 +10,15 @@ interface SelectOptionsProps {
 interface CustomSelectProps extends SelectProps<SelectOptionsProps> {
 	placeholder: string
 	options: SelectOptionsProps[]
-	selected: string
 	onSelectionChange: Function
+	label: string
+	name: string
+	required: boolean
 }
 
 const CustomSelect: React.FC<CustomSelectProps> = props => {
-	const { placeholder, options, selected, onSelectionChange } = props
+	const { placeholder, options, onSelectionChange, label, name, required=false } =
+		props
 
 	const onChange = (value: string) => {
 		console.log(`selected ${value}`)
@@ -29,19 +32,25 @@ const CustomSelect: React.FC<CustomSelectProps> = props => {
 	// Filter `option.label` match the user type `input`
 	const filterOption = (
 		input: string,
-		option?: { label: string; value: string }
+		option?: { label: string; value: string | number }
 	) => (option?.label ?? '').toLowerCase().includes(input.toLowerCase())
 
 	return (
-  <Select
-    showSearch
-    placeholder={placeholder}
-    optionFilterProp='children'
-    onChange={onChange}
-    onSearch={onSearch}
-    filterOption={filterOption}
-    options={options}
-		/>
+    <Form.Item
+        label={label}
+        name={name}
+        required={required}
+		>
+        <Select
+            showSearch
+            placeholder={placeholder}
+            optionFilterProp='children'
+            onChange={onChange}
+            onSearch={onSearch}
+            filterOption={filterOption}
+            options={options}
+			/>
+    </Form.Item>
 	)
 }
 

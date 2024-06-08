@@ -4,7 +4,22 @@ const apiClient = axios.create({
  baseURL: 'http://0.0.0.0:8000/api/',
 })
 
+async function authenticate() {
+  try {
+    const username = 'admin'
+    const password = 'admin'
+    const credentials = btoa(`${username}:${password}`)
+    const response = await apiClient.post('token', {}, {
+      headers: { 'Authorization': `Basic ${credentials}` }
+    })
+    const { token } = response.data
+    sessionStorage.setItem('token', token) // Store the token
+  } catch (error) {
+    console.error('Authentication failed:', error)
+  }
+}
 
+authenticate()
 
 apiClient.interceptors.request.use((config) => {
  const token = sessionStorage.getItem('token') // || 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ0b2tlbl90eXBlIjoiYWNjZXNzIiwiZXhwIjoxNzE5MzUzNTc4LCJpYXQiOjE3MTY3NjE1NzgsImp0aSI6ImIzOThhYzcwNDUyMzRkYjFiMGY2YjA5MDUxYjM4NDk5IiwidXNlcl9pZCI6MX0.8ysutgGWdvMqTttQYkZmwKqn3sjZ6EFvL8umbBDFwz0'

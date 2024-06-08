@@ -12,12 +12,12 @@ const inputStyle: React.CSSProperties = {
 const CustomAutoCompleteInput: React.FC = () => {
 
     return (
-      <Input
-        className='mx-1'
-        size='small'
-        placeholder='Search...'
-        prefix={<SearchOutlined/>}
-        style={inputStyle}
+        <Input
+            className='mx-1'
+            size='small'
+            placeholder='Search...'
+            prefix={<SearchOutlined/>}
+            style={inputStyle}
         />
     )
 }

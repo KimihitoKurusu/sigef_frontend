@@ -51,14 +51,14 @@ const CustomSwitch: React.FC<CustomDatePickerProps> = (props) => {
     }
 
     return (
-      <Form.Item label={label} name={name} rules={rules}>
-        <Switch
-          disabled={disabled}
-          checkedChildren={<CheckOutlined />}
-          unCheckedChildren={<CloseOutlined />}
-          defaultChecked
+        <Form.Item label={label} name={name} rules={rules}>
+            <Switch
+                disabled={disabled}
+                checkedChildren={<CheckOutlined />}
+                unCheckedChildren={<CloseOutlined />}
+                defaultChecked
             />
-      </Form.Item>
+        </Form.Item>
 
     )
 }

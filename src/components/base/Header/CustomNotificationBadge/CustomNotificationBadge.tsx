@@ -6,9 +6,9 @@ const CustomNotificationBadge: React.FC = () => {
     const [count, setCount] = useState(5)
 
     return (
-      <Badge  count={count} size='small'>
-        <IoNotificationsCircleSharp size={15}/>
-      </Badge>
+        <Badge  count={count} size='small'>
+            <IoNotificationsCircleSharp size={15}/>
+        </Badge>
     )
 }
 

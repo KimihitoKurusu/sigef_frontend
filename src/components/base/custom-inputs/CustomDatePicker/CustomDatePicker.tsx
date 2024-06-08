@@ -48,14 +48,14 @@ const CustomDatePicker: React.FC<CustomDatePickerProps> = (props) => {
     }
 
     return (
-      <Form.Item label={label} name={name} rules={rules}>
-        <DatePicker
-          onChange={onChangeValue}
-          format='YYYY-MM-DD HH:mm'
-          disabledDate={disabledDate}
-          showTime={{defaultValue: dayjs('00:00:00', 'HH:mm')}}
+        <Form.Item label={label} name={name} rules={rules}>
+            <DatePicker
+                onChange={onChangeValue}
+                format='YYYY-MM-DD HH:mm'
+                disabledDate={disabledDate}
+                showTime={{defaultValue: dayjs('00:00:00', 'HH:mm')}}
             />
-      </Form.Item>
+        </Form.Item>
 
     )
 }

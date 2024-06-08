@@ -6,12 +6,12 @@ interface CustomModalProps extends ModalProps {}
 
 const CustomModal: React.FC<CustomModalProps> = ({ children, ...props }) => {
     return (
-      <Modal
-        centered
-        {...props}
+        <Modal
+            centered
+            {...props}
         >
-        {children}
-      </Modal>
+            {children}
+        </Modal>
     )
 }
 

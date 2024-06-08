@@ -61,10 +61,10 @@ const MySider: React.FC = () => {
     }
 
     return (
-      <Menu
-        onClick={onClick}
-        mode='inline'
-        items={items}
+        <Menu
+            onClick={onClick}
+            mode='inline'
+            items={items}
         />
     )
 }

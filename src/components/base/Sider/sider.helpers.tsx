@@ -30,11 +30,11 @@ const getLink = (
     url: string,
 ) => {
     return (
-      <Link href={url}>
-        <h3>
-          {label}
-        </h3>
-      </Link>
+        <Link href={url}>
+            <h3>
+                {label}
+            </h3>
+        </Link>
     )
 }
 
